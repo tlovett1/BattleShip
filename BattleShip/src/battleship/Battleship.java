@@ -57,9 +57,10 @@ public class Battleship
         totalShipsSunk = 0;
         totalMisses = 0;
     }
+    
 
     public void process_user_guess(int row, int col) {
-        guess_locations[row][col] = true;
+        guess_locations[row-1][col-1] = true;
 
         for (int i = 0; i < guess_locations.length; i++) {
             for (int k = 0; k < guess_locations[i].length; k++) {
