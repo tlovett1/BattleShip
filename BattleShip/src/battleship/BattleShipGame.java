@@ -64,6 +64,9 @@ public class BattleShipGame
              System.out.println("");
           playAgain = JOptionPane.showInputDialog("Do you want to play again? Y"
                   + "/N");
+          if(playAgain == null) {
+              break;
+          } 
          }
          else
          {
