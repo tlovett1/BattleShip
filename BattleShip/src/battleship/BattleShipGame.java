@@ -1,6 +1,7 @@
 
 package battleship;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -28,6 +29,9 @@ public class BattleShipGame
         Battleship myGame = new Battleship();// TODO code application logic here
         String input = null;
         String playAgain = null;
+        int gamesWon = 0;
+        int gamesLost = 0;
+        String[] checkInput = new String[4];
         do
         {
         JOptionPane.showMessageDialog(null, String.format("             "
@@ -38,6 +42,7 @@ public class BattleShipGame
                 + "   If you find "
                 + "all four you win!!!!" + " %n(" + "Please enter your attempts"
                 + " in this form: ex (row/column) = (5,5)" + ")"));
+        
        myGame.initialize_ship_locations();
        
          for(int i = 1; i < 5; i++)
@@ -52,14 +57,39 @@ public class BattleShipGame
            else
            {
            Scanner myScan = new Scanner(input);
+           checkInput[i] = input;
            int k = myScan.useDelimiter(",").nextInt();
            int j = myScan.useDelimiter(",").nextInt();
+           
+           if(i > 1)
+           {
+               while(Arrays.asList(checkInput).contains(input))
+               {
+               input = JOptionPane.showInputDialog("Your previous input has "
+                       + "already been entered, Please try again");
+               }
+           }
            myGame.process_user_guess(k, j);
            }
         }
          if(input != null)
          {
           myGame.displayBattleshipGame();
+             if (myGame.userWon()) 
+             {
+                System.out.println("Congratulations, you sunk all 4 ships!!!!");
+                gamesWon++;
+             } 
+             else 
+             {
+                 System.out.println("Sorry, you only sunk " + 
+                         myGame.getTotalShipsSunk() + " and" + " missed " + 
+                         myGame.getTotalMisses());
+                 gamesLost++;
+             }
+             
+             System.out.println("Games Won: " + gamesWon + "\nGames Lost: " +
+                     gamesLost);
           myGame.clear_ship_locations();
           playAgain = JOptionPane.showInputDialog("Do you want to play again? Y"
                   + "/N");
