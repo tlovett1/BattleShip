@@ -61,6 +61,7 @@ public class BattleShipGame
          {
           myGame.displayBattleshipGame();
           myGame.clear_ship_locations();
+             System.out.println("");
           playAgain = JOptionPane.showInputDialog("Do you want to play again? Y"
                   + "/N");
          }
