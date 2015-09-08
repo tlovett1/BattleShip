@@ -47,7 +47,10 @@ public class Battleship
             ship_locations[row][column] = true;
         }
     }
-
+    /**
+     * If  already inputed already exists then ask for input again
+     * 
+     */
     public void clear_ship_locations() 
     {
         for (int i = 0; i < ship_locations.length; i++) 
@@ -125,7 +128,7 @@ public class Battleship
         }
         else
         {
-            System.out.println("Sorry, you only sunk " + totalShipsSunk + " and"
+            System.out.println("Sorry, you only sunk " + totalShipsSunk + " and "
                     + "missed " + totalMisses);
         }
     }
