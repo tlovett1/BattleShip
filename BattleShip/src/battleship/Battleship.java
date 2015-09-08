@@ -48,6 +48,7 @@ public class Battleship
             for (int k = 0; k < ship_locations[i].length; k++) 
             {
                 ship_locations[i][k] = false;
+                guess_locations[i][k] = false;
             }
         }
         totalShipsSunk = 0;
