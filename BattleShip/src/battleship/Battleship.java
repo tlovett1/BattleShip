@@ -20,7 +20,10 @@ public class Battleship
     int totalMisses;
 
     public Battleship() 
-    {}
+    {
+        totalShipsSunk = 0;
+        totalMisses = 0;
+    }
 
     public void initialize_ship_locations() 
     {
@@ -104,10 +107,10 @@ public class Battleship
         }
 
         System.out.println("\n\t   Game Board");
-        for (int i = 0; i < ship_locations.length; i++) {
-
-            for (int k = 0; k < ship_locations[i].length; k++) {
-
+        for (int i = 0; i < ship_locations.length; i++) 
+        {
+            for (int k = 0; k < ship_locations[i].length; k++) 
+            {
                 if (ship_locations[i][k] == true) {
                     System.out.print("\u2715" + " \t");
                 } else {
@@ -116,6 +119,14 @@ public class Battleship
             }
             System.out.println("");
         }
-
+        if(userWon())
+        {
+            System.out.println("Congratulations, you sunk all 4 ships!!!!");
+        }
+        else
+        {
+            System.out.println("Sorry, you only sunk " + totalShipsSunk + " and"
+                    + "missed " + totalMisses);
+        }
     }
 }
