@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package battleship;
+
 import java.util.Random;
 
 /**
@@ -17,13 +18,10 @@ public class Battleship
     boolean guess_locations[][] = new boolean[5][5];
     int totalShipsSunk;
     int totalMisses;
-    
-    public Battleship()
-    {
-        
-    }
-    
-    
+
+    public Battleship() 
+    {}
+
     public void initialize_ship_locations() 
     {
         int row = shipSpot.nextInt(5) + 0;
@@ -46,12 +44,12 @@ public class Battleship
             ship_locations[row][column] = true;
         }
     }
-    
-    public void clear_ship_locations()
+
+    public void clear_ship_locations() 
     {
-        for(int i = 0; i < ship_locations.length; i++)
+        for (int i = 0; i < ship_locations.length; i++) 
         {
-            for(int k = 0; k < ship_locations[i].length; k++)
+            for (int k = 0; k < ship_locations[i].length; k++) 
             {
                 ship_locations[i][k] = false;
             }
@@ -59,42 +57,38 @@ public class Battleship
         totalShipsSunk = 0;
         totalMisses = 0;
     }
-    
-    
-    public void process_user_guess(int row, int col)
-    {
-       guess_locations[row][col] = true;
-        
-       for(int i = 0; i < guess_locations.length; i++)
-        {
-            for(int k = 0; k < guess_locations[i].length; k++)
-            {
-                if(guess_locations[i][k] == ship_locations[i][k])
-                {
+
+    public void process_user_guess(int row, int col) {
+        guess_locations[row][col] = true;
+
+        for (int i = 0; i < guess_locations.length; i++) {
+            for (int k = 0; k < guess_locations[i].length; k++) {
+                if (guess_locations[i][k] == ship_locations[i][k]) {
                     totalShipsSunk++;
                 }
                 totalMisses++;
             }
         }
-        
+
     }
-    
-    public boolean userWon()
+
+    public boolean userWon() 
     {
-        if(totalShipsSunk == 4)
+        if (totalShipsSunk == 4) 
         {
             return true;
         }
-        
+
         return false;
     }
-    
-    public void displayBattleshipGame()
-    { System.out.println("\t   User Guesses");
 
-        for (int i = 0; i < guess_locations.length; i++)
+    public void displayBattleshipGame() 
+    {
+        System.out.println("\t   User Guesses");
+
+        for (int i = 0; i < guess_locations.length; i++) 
         {
-            for (int k = 0; k < guess_locations[i].length; k++)
+            for (int k = 0; k < guess_locations[i].length; k++) 
             {
                 if (guess_locations[i][k] == true) 
                 {
@@ -107,20 +101,15 @@ public class Battleship
             }
             System.out.println("");
         }
-        
+
         System.out.println("\n\t   Game Board");
-        for (int i = 0; i < ship_locations.length; i++) 
-        {
+        for (int i = 0; i < ship_locations.length; i++) {
 
-            for (int k = 0; k < ship_locations[i].length; k++) 
-            {
+            for (int k = 0; k < ship_locations[i].length; k++) {
 
-                if (ship_locations[i][k] == true) 
-                {
+                if (ship_locations[i][k] == true) {
                     System.out.print("\u2715" + " \t");
-                } 
-                else 
-                {
+                } else {
                     System.out.print("\u25CF" + "\t");
                 }
             }
@@ -129,5 +118,3 @@ public class Battleship
 
     }
 }
-    
-

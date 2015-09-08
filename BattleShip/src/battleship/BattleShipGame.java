@@ -32,7 +32,15 @@ public class BattleShipGame
                 + "in this form: ex (row/column) = (5/5)" + ")"));
        myGame.initialize_ship_locations();
        
-        myGame.displayBattleshipGame();
+         for(int i = 1; i < 5; i++)
+       {
+           String input = JOptionPane.showInputDialog("Guess " + i);
+           Scanner myScan = new Scanner(input);
+           int k = myScan.useDelimiter("/").nextInt();
+           int j = myScan.useDelimiter("/").nextInt();
+           myGame.process_user_guess(k, j);
+       }
+       myGame.displayBattleshipGame();
     }
     
 }
