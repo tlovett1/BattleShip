@@ -8,10 +8,19 @@ package battleship;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author kennetpostigo
- */
+///////////////////////////////////////////////////////////////////////////////                  
+
+// Title:            BattleShip (2D Array Review)
+// Files:            BattleShipGame.java, Battleship.java
+// Semester:         COP3337 Fall 2015
+// TeamName:         The Force
+// Author:           5120019, 4890534
+// Lecturer's Name:  Christy Charters
+//
+// Description of Program’s Functionality: Generates Battleship Game for player,
+// Lets user know whether they hit or miss ships.
+//
+//////////////////////////// 80 columns wide/////////////////////////////////
 public class BattleShipGame
 {
 
@@ -56,7 +65,8 @@ public class BattleShipGame
          {
           myGame.displayBattleshipGame();
           myGame.clear_ship_locations();
-          playAgain = JOptionPane.showInputDialog("Do you want to play again? Y/N");
+          playAgain = JOptionPane.showInputDialog("Do you want to play again? Y"
+                  + "/N");
          }
          else
          {

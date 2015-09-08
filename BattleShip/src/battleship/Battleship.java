@@ -20,7 +20,9 @@ public class Battleship
     private int totalMisses = 0;
     public Battleship() 
     {}
-
+    /**
+     * Initializes random ship locations.
+     */
     public void initialize_ship_locations() 
     {
         int row = shipSpot.nextInt(5) + 0;
@@ -44,7 +46,7 @@ public class Battleship
         }
     }
     /**
-     * If  already inputed already exists then ask for input again
+     * Clear Ship locations at the end of the game.
      * 
      */
     public void clear_ship_locations() 
@@ -59,7 +61,12 @@ public class Battleship
         totalShipsSunk = 0;
         totalMisses = 0;
     }
-    
+    /**
+     * Processes user input into their guess display and increments hits and 
+     * misses.
+     * @param row sets the inputted row
+     * @param col sets the inputted col
+     */
     public void process_user_guess(int row, int col) 
     {
         guess_locations[row - 1][col - 1] = true;
@@ -71,7 +78,10 @@ public class Battleship
         }
        totalMisses = 4 - totalShipsSunk;
     }
-
+    /**
+     * Checks if user won the battleship match.
+     * @return Boolean(true or false)
+     */
     public boolean userWon() 
     {
         if (totalShipsSunk == 4) 
@@ -81,7 +91,10 @@ public class Battleship
 
         return false;
     }
-
+    /**
+     * Prints the user and random ship game board and total misses and hits
+     * they have
+     */
     public void displayBattleshipGame() 
     {
         System.out.println("\t   User Guesses");
