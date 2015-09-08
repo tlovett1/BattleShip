@@ -17,8 +17,8 @@ public class Battleship
     private boolean ship_locations[][] = new boolean[5][5];
     private boolean guess_locations[][] = new boolean[5][5];
     private int totalShipsSunk = 0;
-    private int totalMisses = 0;
-
+    private int totalMisses = 4;
+    private int total;
     public Battleship() 
     {}
 
@@ -44,7 +44,10 @@ public class Battleship
             ship_locations[row][column] = true;
         }
     }
-
+    /**
+     * If  already inputed already exists then ask for input again
+     * 
+     */
     public void clear_ship_locations() 
     {
         for (int i = 0; i < ship_locations.length; i++) 
@@ -56,6 +59,7 @@ public class Battleship
         }
         totalShipsSunk = 0;
         totalMisses = 0;
+        total = 0;
     }
     
     public void process_user_guess(int row, int col) 
@@ -67,7 +71,7 @@ public class Battleship
         {
             totalShipsSunk++;
         }
-        totalMisses++;
+       total = totalMisses - totalShipsSunk;
     }
 
     public boolean userWon() 
@@ -119,8 +123,8 @@ public class Battleship
         }
         else
         {
-            System.out.println("Sorry, you only sunk " + totalShipsSunk + " and"
-                    + " missed " + totalMisses);
+            System.out.println("Sorry, you only sunk " + totalShipsSunk + " and "
+                    + "missed " + total);
         }
     }
 }
