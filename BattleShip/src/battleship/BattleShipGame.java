@@ -21,7 +21,9 @@ public class BattleShipGame
     public static void main(String[] args) 
     {
         Battleship myGame = new Battleship();// TODO code application logic here
-        
+        String input;
+        do
+        {
         JOptionPane.showMessageDialog(null, String.format("             "
                 + "              Welcome to the game of Battleship. %n"
                 + "       In this game a 5 by 5 game board will be created with "
@@ -33,15 +35,18 @@ public class BattleShipGame
        myGame.initialize_ship_locations();
        
          for(int i = 1; i < 5; i++)
-       {
-           String input = JOptionPane.showInputDialog("Guess " + i);
+        {
+           input = JOptionPane.showInputDialog("Guess " + i);
            Scanner myScan = new Scanner(input);
            int k = myScan.useDelimiter(",").nextInt();
            int j = myScan.useDelimiter(",").nextInt();
            myGame.process_user_guess(k, j);
-       }
+        }
        myGame.displayBattleshipGame();
+        input = JOptionPane.showInputDialog("Do you want to play again? Y/N");
+        }
+        while(input.equalsIgnoreCase("Y"));
     }
-    
+        
 }
 

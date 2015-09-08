@@ -14,16 +14,13 @@ import java.util.Random;
 public class Battleship 
 {
     Random shipSpot = new Random();
-    boolean ship_locations[][] = new boolean[5][5];
-    boolean guess_locations[][] = new boolean[5][5];
-    int totalShipsSunk;
-    int totalMisses;
+    private boolean ship_locations[][] = new boolean[5][5];
+    private boolean guess_locations[][] = new boolean[5][5];
+    private int totalShipsSunk = 0;
+    private int totalMisses = 0;
 
     public Battleship() 
-    {
-        totalShipsSunk = 0;
-        totalMisses = 0;
-    }
+    {}
 
     public void initialize_ship_locations() 
     {
@@ -61,19 +58,16 @@ public class Battleship
         totalMisses = 0;
     }
     
+    public void process_user_guess(int row, int col) 
+    {
+        guess_locations[row - 1][col - 1] = true;
 
-    public void process_user_guess(int row, int col) {
-        guess_locations[row-1][col-1] = true;
-
-        for (int i = 0; i < guess_locations.length; i++) {
-            for (int k = 0; k < guess_locations[i].length; k++) {
-                if (guess_locations[i][k] == ship_locations[i][k]) {
-                    totalShipsSunk++;
-                }
-                totalMisses++;
-            }
+        if(guess_locations[row - 1][col - 1] == 
+                ship_locations[row - 1][col - 1]) 
+        {
+            totalShipsSunk++;
         }
-
+        totalMisses++;
     }
 
     public boolean userWon() 
@@ -89,7 +83,6 @@ public class Battleship
     public void displayBattleshipGame() 
     {
         System.out.println("\t   User Guesses");
-
         for (int i = 0; i < guess_locations.length; i++) 
         {
             for (int k = 0; k < guess_locations[i].length; k++) 
@@ -119,6 +112,7 @@ public class Battleship
             }
             System.out.println("");
         }
+        
         if(userWon())
         {
             System.out.println("Congratulations, you sunk all 4 ships!!!!");
@@ -126,7 +120,7 @@ public class Battleship
         else
         {
             System.out.println("Sorry, you only sunk " + totalShipsSunk + " and"
-                    + "missed " + totalMisses);
+                    + " missed " + totalMisses);
         }
     }
 }
