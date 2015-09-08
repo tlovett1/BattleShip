@@ -90,8 +90,7 @@ public class Battleship
     }
     
     public void displayBattleshipGame()
-    {
-        System.out.println("User Guesses");
+    { System.out.println("\t   User Guesses");
 
         for (int i = 0; i < guess_locations.length; i++)
         {
@@ -99,17 +98,17 @@ public class Battleship
             {
                 if (guess_locations[i][k] == true) 
                 {
-                    System.out.print("  " + "X" + " \t");
+                    System.out.print("\u2715" + " \t");
                 } 
                 else 
                 {
-                    System.out.print("*" + "\t");
+                    System.out.print("\u25CF" + "\t");
                 }
             }
             System.out.println("");
         }
         
-        System.out.println("\nGame Board");
+        System.out.println("\n\t   Game Board");
         for (int i = 0; i < ship_locations.length; i++) 
         {
 
@@ -118,11 +117,11 @@ public class Battleship
 
                 if (ship_locations[i][k] == true) 
                 {
-                    System.out.print("  " + "X" + " \t");
+                    System.out.print("\u2715" + " \t");
                 } 
                 else 
                 {
-                    System.out.print("*" + "\t");
+                    System.out.print("\u25CF" + "\t");
                 }
             }
             System.out.println("");
