@@ -1,4 +1,3 @@
-
 package battleship;
 
 import java.util.Arrays;
@@ -6,7 +5,6 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 ///////////////////////////////////////////////////////////////////////////////                  
-
 // Title:            BattleShip (2D Array Review)
 // Files:            BattleShipGame.java, Battleship.java
 // Semester:         COP3337 Fall 2015
@@ -18,17 +16,16 @@ import javax.swing.JOptionPane;
 // Lets user know whether they hit or miss ships.
 //
 //////////////////////////// 80 columns wide/////////////////////////////////
-public class BattleShipGame
-{
+public class BattleShipGame {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
         Battleship myGame = new Battleship();// TODO code application logic here
         String input = null;
         String playAgain = null;
+
         int gamesWon = 0;
         int gamesLost = 0;
         String[] checkInput = new String[4];
@@ -41,7 +38,7 @@ public class BattleShipGame
                 + "attempts to find them %n                            "
                 + "   If you find "
                 + "all four you win!!!!" + " %n(" + "Please enter your attempts"
-                + " in this form: ex (row/column) = (5,5)" + ")"));
+                + " in this form: ex (row,column) = (5,5)" + ")"));
         
        myGame.initialize_ship_locations();
        
@@ -57,18 +54,10 @@ public class BattleShipGame
            else
            {
            Scanner myScan = new Scanner(input);
-           checkInput[i] = input;
            int k = myScan.useDelimiter(",").nextInt();
            int j = myScan.useDelimiter(",").nextInt();
            
-           if(i > 1)
-           {
-               while(Arrays.asList(checkInput).contains(input))
-               {
-               input = JOptionPane.showInputDialog("Your previous input has "
-                       + "already been entered, Please try again");
-               }
-           }
+           
            myGame.process_user_guess(k, j);
            }
         }
@@ -100,7 +89,5 @@ public class BattleShipGame
          }
         }
         while(playAgain.equalsIgnoreCase("Y") );
-    }
-        
 }
-
+}
