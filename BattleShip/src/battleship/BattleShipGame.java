@@ -42,22 +42,30 @@ public class BattleShipGame {
             myGame.initialize_ship_locations();
             Arrays.fill(checkInput, null);
             for (int i = 1; i < 5; i++) {
-                input = JOptionPane.showInputDialog("Guess " + i);
+                input = JOptionPane.showInputDialog("Guess #" + i);
 
                 if (input == null) {
                     System.out.println("Thanks for playing");
                     break;
                 } else {
                     Scanner myScan = new Scanner(input);
-                    
                     while (Arrays.asList(checkInput).contains(input)) {
                         input = JOptionPane.showInputDialog("The same numbers have been"
                                 + " previously entered. Please try again");
                     }
                     int k = myScan.useDelimiter(",").nextInt();
                     int j = myScan.useDelimiter(",").nextInt();
-                    myGame.process_user_guess(k, j);
-                    checkInput[i] = input;
+                    if (k > 5 || j > 5) {
+                        input = JOptionPane.showInputDialog("Guess number was "
+                                + "greater than 5. Please try Guess #" + i);
+                        k = myScan.useDelimiter(",").nextInt();
+                        j = myScan.useDelimiter(",").nextInt();
+                        myGame.process_user_guess(k, j);
+                        checkInput[i] = input;
+                    } else {
+                        myGame.process_user_guess(k, j);
+                        checkInput[i] = input;
+                    }
                 }
             }
             if (input != null) {
