@@ -9,26 +9,28 @@ import javax.swing.JOptionPane;
 // Files:            BattleShipGame.java, Battleship.java
 // Semester:         COP3337 Fall 2015
 // TeamName:         The Force
-// Author:           5120019, 4890534
+// Author:           4890534
 // Lecturer's Name:  Christy Charters
 //
 // Description of Program’s Functionality: Generates Battleship Game for player,
 // Lets user know whether they hit or miss ships.
 //
 //////////////////////////// 80 columns wide/////////////////////////////////
-public class BattleShipGame {
+public class BattleShipGame 
+{
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Battleship myGame = new Battleship();// TODO code application logic here
         String input = null;
         String playAgain = null;
 
         int gamesWon = 0;
         int gamesLost = 0;
-        String[] checkInput = new String[4];
+        String[] checkInput = new String[5];
         do
         {
         JOptionPane.showMessageDialog(null, String.format("             "
@@ -41,7 +43,7 @@ public class BattleShipGame {
                 + " in this form: ex (row,column) = (5,5)" + ")"));
         
        myGame.initialize_ship_locations();
-       
+       Arrays.fill(checkInput, null);
          for(int i = 1; i < 5; i++)
         {
            input = JOptionPane.showInputDialog("Guess " + i);
@@ -54,26 +56,29 @@ public class BattleShipGame {
            else
            {
            Scanner myScan = new Scanner(input);
+           while(Arrays.asList(checkInput).contains(input))
+           {
+               input = JOptionPane.showInputDialog("The same numbers have been"
+                       + " previously entered. Please try again");
+           }
            int k = myScan.useDelimiter(",").nextInt();
            int j = myScan.useDelimiter(",").nextInt();
-           
-           
            myGame.process_user_guess(k, j);
+           checkInput[i] = input;
            }
         }
          if(input != null)
-         {
+        {
           myGame.displayBattleshipGame();
              if (myGame.userWon()) 
              {
-                System.out.println("Congratulations, you sunk all 4 ships!!!!");
+                System.out.println("\nCongrats, you sunk all 4 ships!!!!");
                 gamesWon++;
              } 
              else 
              {
-                 System.out.println("Sorry, you only sunk " + 
-                         myGame.getTotalShipsSunk() + " and" + " missed " + 
-                         myGame.getTotalMisses());
+                 System.out.println("\nShips Sunk: " +myGame.getTotalShipsSunk() 
+                         + "\nShips Missed: " + myGame.getTotalMisses());
                  gamesLost++;
              }
              
@@ -82,7 +87,7 @@ public class BattleShipGame {
           myGame.clear_ship_locations();
           playAgain = JOptionPane.showInputDialog("Do you want to play again? Y"
                   + "/N");
-         }
+        }
          else
          {
              break;
