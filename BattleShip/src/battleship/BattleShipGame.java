@@ -101,6 +101,10 @@ public class BattleShipGame {
                 myGame.clear_ship_locations();
                 playAgain = JOptionPane.showInputDialog("Do you want to play "
                         + "again? Y/N");
+                if (playAgain != "y" || playAgain != "yes") {
+                    System.out.println("\nThanks for playing, have a good day!");
+                    break;
+                }
             } else {
                 break;
             }
